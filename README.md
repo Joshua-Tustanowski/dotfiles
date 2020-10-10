@@ -2,15 +2,15 @@
 
 Details in .bashrc
 
-## Resetting your macOS settings
-
-- details specified in the .macos file
-
 ### TODOS
 
 - [ ] Place the files in the \$HOME directory
 - [ ] Automate the process with a seperate Shell script, like the OG script from before
 - [ ] Determine how to get the nice git status in the terminal
+
+## Resetting your macOS settings
+
+- details specified in the .macos file
 
 ### Before you re-install
 
