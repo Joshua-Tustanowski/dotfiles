@@ -1,3 +1,3 @@
-if [ -f ~/dotfiles/.bashrc ]; then
-    source ~/dotfiles/.bashrc
+if [ -f ~/.bashrc ]; then
+    source ~/.bashrc
 fi

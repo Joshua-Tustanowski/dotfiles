@@ -1,16 +1,12 @@
 #!/bin/bash
 
 # Enable tab completion
-export GIT_PATH="$HOME/dotfiles/git"
+export GIT_PATH="$HOME/git"
 source "$GIT_PATH/git-completion.bash"
 
-#aliases
-alias cd..="cd .."
-alias l="ls -al"
-alias lp="ls -p"
-alias h=history
-alias python=python3
-alias ls='ls -lGH'
+# compile other sources
+source .aliases
+source .functions
 
 # colours
 green="\[\033[0;32m\]"
@@ -22,7 +18,6 @@ Red="\[\033[0;31m\]"
 UCyan="\[\033[4;36m\]"
 Cyan="\[\033[0;36m\]"
 On_Yellow="\[\033[43m\]"
-
 
 # PATH details
 export PATH="/usr/local/opt/openssl@1.1/bin:$PATH"
