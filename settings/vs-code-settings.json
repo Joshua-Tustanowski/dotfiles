@@ -1,0 +1,24 @@
+{
+    "editor.suggestSelection": "first",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "python.languageServer": "Microsoft",
+    "python.pythonPath": "/usr/local/bin/python3",
+    "editor.tokenColorCustomizations": {
+        "comments": "#8e8e91",
+        "functions": "#eb9109"
+    },
+    "workbench.iconTheme": "material-icon-theme",
+    "latex-workshop.chktex.path": "/Library/TeX/texbin/chktex",
+    "latex-workshop.chktex.enabled": true,
+    "latex-workshop.texcount.path": "/Library/TeX/texbin/texcount",
+    "latex-workshop.synctex.path": "/Library/TeX/texbin/synctex",
+    "latex-workshop.latexindent.path": "/Library/TeX/texbin/latexindent",
+    "latex-workshop.view.pdf.viewer": "external",
+    "editor.formatOnSave": true,
+    "editor.minimap.enabled": false,
+    "explorer.confirmDragAndDrop": false,
+    "kite.showWelcomeNotificationOnStartup": false,
+    "window.zoomLevel": 0,
+    "workbench.colorTheme": "Sublime Material Theme - Dark",
+    "liveServer.settings.donotShowInfoMsg": true
+}
