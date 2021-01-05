@@ -4,9 +4,9 @@ Details in .bashrc
 
 ### TODOS
 
-- [ ] Place the files in the \$HOME directory
-- [ ] Automate the process with a seperate Shell script, like the OG script from before
-- [ ] Determine how to get the nice git status in the terminal
+- [x] Place the files in the \$HOME directory
+- [x] Automate the process with a seperate Shell script, like the OG script from before
+- [x] Determine how to get the nice git status in the terminal
 
 ## Resetting your macOS settings
 
