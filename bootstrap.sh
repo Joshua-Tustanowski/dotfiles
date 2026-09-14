@@ -10,8 +10,9 @@ function doIt() {
 		--exclude ".osx" \
 		--exclude "bootstrap.sh" \
 		--exclude "README.md" \
-		--exclude "LICENSE-MIT.txt" \
+		--exclude "LICENSE" \
 		--exclude ".gitconfig-personal.example" \
+		--exclude "brew.sh" \
 		-avh --no-perms . ~;
 
 	# Install oh-my-zsh if it isn't already present
