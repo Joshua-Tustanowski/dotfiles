@@ -25,16 +25,12 @@ export PATH="$PATH:$HOME/google-cloud-sdk/bin"
 
 # Load the shell dotfiles, and then some:
 # * ~/.path can be used to extend `$PATH`.
-# * ~/.extra can be used for other settings you don’t want to commit
-#   (e.g. machine-specific SDK path/completion snippets).
-dotfiles_zsh_dir="${0:A:h}";
-dotfiles_root="${dotfiles_zsh_dir:h}";
-for file in ~/.path "$dotfiles_root"/shell/.{exports,aliases,functions} ~/.extra; do
-	[ -r "$file" ] && [ -f "$file" ] && source "$file";
-done;
-unset file;
-unset dotfiles_zsh_dir;
-unset dotfiles_root;
+# * ~/.extra can be used for other settings you don’t want to commit.
+[ -f ~/.path ] && source ~/.path;
+[ -f "$HOME/dev/dotfiles/shell/.exports" ] && source "$HOME/dev/dotfiles/shell/.exports";
+[ -f "$HOME/dev/dotfiles/shell/.aliases" ] && source "$HOME/dev/dotfiles/shell/.aliases";
+[ -f "$HOME/dev/dotfiles/shell/.functions" ] && source "$HOME/dev/dotfiles/shell/.functions";
+[ -f ~/.extra ] && source ~/.extra;
 
 # Case-insensitive globbing (used in pathname expansion)
 setopt nocaseglob;
@@ -45,4 +41,4 @@ setopt histignoredups;
 setopt histignorespace;
 
 # Correct typos in path names when using `cd`
-setopt correct;
+setopt nocorrect;
