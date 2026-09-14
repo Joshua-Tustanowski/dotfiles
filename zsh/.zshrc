@@ -29,7 +29,7 @@ export PATH="$PATH:$HOME/google-cloud-sdk/bin"
 #   (e.g. machine-specific SDK path/completion snippets).
 dotfiles_zsh_dir="${0:A:h}";
 dotfiles_root="${dotfiles_zsh_dir:h}";
-for file in ~/.path "$dotfiles_root"/bash/.exports "$dotfiles_root"/bash/.aliases "$dotfiles_root"/bash/.functions ~/.extra; do
+for file in ~/.path "$dotfiles_root"/shell/.{exports,aliases,functions} ~/.extra; do
 	[ -r "$file" ] && [ -f "$file" ] && source "$file";
 done;
 unset file;
