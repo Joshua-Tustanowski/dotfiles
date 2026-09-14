@@ -83,6 +83,7 @@ brew install --yes --cask docker
 
 # Install other useful binaries.
 brew install --yes ack
+brew install --yes bat
 #brew install exiv2
 brew install --yes git
 brew install --yes git-lfs
