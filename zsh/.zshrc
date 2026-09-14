@@ -5,7 +5,23 @@ export PATH="$HOME/bin:$HOME/.local/bin:$PATH";
 export ZSH="$HOME/.oh-my-zsh";
 ZSH_THEME="robbyrussell";
 plugins=(git macos brew);
-source "$ZSH/oh-my-zsh.sh";
+
+# Docker CLI completions
+if [ -d "$HOME/.docker/completions" ]; then
+	fpath=($HOME/.docker/completions $fpath)
+fi
+
+if [ -f "$ZSH/oh-my-zsh.sh" ]; then
+	source "$ZSH/oh-my-zsh.sh";
+else
+	autoload -Uz compinit
+	compinit
+fi
+
+# Google Cloud SDK
+if [ -f "$HOME/dev/google-cloud-sdk/path.zsh.inc" ]; then . "$HOME/dev/google-cloud-sdk/path.zsh.inc"; fi
+if [ -f "$HOME/dev/google-cloud-sdk/completion.zsh.inc" ]; then . "$HOME/dev/google-cloud-sdk/completion.zsh.inc"; fi
+export PATH="$PATH:$HOME/google-cloud-sdk/bin"
 
 # Load the shell dotfiles, and then some:
 # * ~/.path can be used to extend `$PATH`.

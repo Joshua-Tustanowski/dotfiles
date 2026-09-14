@@ -146,3 +146,9 @@ alias reload="exec ${SHELL} -l"
 
 # Print each PATH entry on a separate line
 alias path='echo -e ${PATH//:/\\n}'
+
+# fundment-workspace aliases (fdm-up/fdm-down/fdm-shell/fdm-check)
+alias fdm-up='make -C $HOME/Workspace/Management up'
+alias fdm-down='make -C $HOME/Workspace/Management down'
+alias fdm-shell='make -C $HOME/Workspace/Management shell'
+alias fdm-check='make -C $HOME/Workspace/Management check'
