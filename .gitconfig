@@ -1,3 +1,9 @@
+[includeIf "gitdir:~/Personal/"]
+
+	# Use a personal identity (see .gitconfig-personal.example) for anything
+	# cloned under ~/Personal/.
+	path = ~/.gitconfig-personal
+
 [alias]
 
 	# View abbreviated SHA, description, and history graph of the latest 20 commits.

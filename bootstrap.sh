@@ -11,6 +11,7 @@ function doIt() {
 		--exclude "bootstrap.sh" \
 		--exclude "README.md" \
 		--exclude "LICENSE-MIT.txt" \
+		--exclude ".gitconfig-personal.example" \
 		-avh --no-perms . ~;
 
 	# Install oh-my-zsh if it isn't already present

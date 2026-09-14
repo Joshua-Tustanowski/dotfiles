@@ -1,0 +1,10 @@
+# Copy this file to ~/.gitconfig-personal (outside the repo, so it never
+# gets committed) and fill in your own name/email.
+#
+# It's pulled in automatically by the [includeIf "gitdir:~/Personal/"] block
+# in .gitconfig, so any repo cloned under ~/Personal/ uses this identity
+# instead of the default one in ~/.gitconfig.
+
+[user]
+	name = Your Name
+	email = you@personal-email.com

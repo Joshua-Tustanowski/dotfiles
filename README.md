@@ -47,6 +47,20 @@ git config --global user.email "$GIT_AUTHOR_EMAIL"
 
 You could also use `~/.extra` to override settings, functions and aliases from my dotfiles repository. It’s probably better to [fork this repository](https://github.com/mathiasbynens/dotfiles/fork) instead, though.
 
+### Use a different git identity for personal projects
+
+`.gitconfig` includes a conditional include (`[includeIf "gitdir:~/Personal/"]`) that
+loads `~/.gitconfig-personal` for any repo cloned under `~/Personal/`, so those repos
+use a different name/email (and, if you add one, a different signing key or
+`core.sshCommand`) than your default git identity.
+
+Copy [.gitconfig-personal.example](.gitconfig-personal.example) to `~/.gitconfig-personal`
+(outside the repo, so it's never committed) and fill in your own values:
+
+```bash
+cp .gitconfig-personal.example ~/.gitconfig-personal
+```
+
 ### Sensible macOS defaults
 
 When setting up a new Mac, you may want to set some sensible macOS defaults:
