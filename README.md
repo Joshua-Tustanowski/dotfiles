@@ -61,6 +61,23 @@ Copy [.gitconfig-personal.example](.gitconfig-personal.example) to `~/.gitconfig
 cp .gitconfig-personal.example ~/.gitconfig-personal
 ```
 
+### Clone personal GitHub repositories
+
+The `.gitconfig` includes two convenient shortcuts for cloning personal GitHub repositories using the `github-personal` SSH key:
+
+**Alias:**
+```bash
+git clone-personal Joshua-Tustanowski/dotfiles
+git clone-personal Joshua-Tustanowski/dotfiles my-custom-dir
+```
+
+**URL shorthand:**
+```bash
+git clone ghp:Joshua-Tustanowski/dotfiles
+```
+
+Both methods automatically use your personal GitHub SSH key (`id_e25519_github_personal`) for authentication.
+
 ### Sensible macOS defaults
 
 When setting up a new Mac, you may want to set some sensible macOS defaults:
