@@ -12,7 +12,27 @@ function doIt() {
 		--exclude "README.md" \
 		--exclude "LICENSE-MIT.txt" \
 		-avh --no-perms . ~;
-	source ~/dotfiles/bash/.bash_profile;
+
+	# Install oh-my-zsh if it isn't already present
+	if [ ! -d "$HOME/.oh-my-zsh" ]; then
+		git clone --depth=1 https://github.com/ohmyzsh/ohmyzsh.git "$HOME/.oh-my-zsh";
+	fi;
+
+	# `.bash_profile`, `.bashrc` and `.zshrc` live inside this repo's `bash/`
+	# and `zsh/` folders, so symlink the shells' real entry points at the top
+	# of `$HOME` to them (backing up anything already there, once).
+	local dotfiles_dir="$(pwd)";
+	local entry;
+	for entry in ".bash_profile:bash/.bash_profile" ".bashrc:bash/.bashrc" ".zshrc:zsh/.zshrc"; do
+		local target="${entry%%:*}";
+		local relative_source="${entry#*:}";
+		if [ -e "$HOME/$target" ] && [ ! -L "$HOME/$target" ]; then
+			mv "$HOME/$target" "$HOME/$target.pre-dotfiles-backup";
+		fi;
+		ln -sf "$dotfiles_dir/$relative_source" "$HOME/$target";
+	done;
+
+	source "$dotfiles_dir/bash/.bash_profile";
 }
 
 if [ "$1" == "--force" -o "$1" == "-f" ]; then

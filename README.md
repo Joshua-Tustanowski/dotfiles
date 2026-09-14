@@ -10,6 +10,14 @@ source bootstrap.sh
 
 To update later on, just run that command again.
 
+Running it will, among other things:
+- symlink `~/.bash_profile`, `~/.bashrc` and `~/.zshrc` to the real files in this repo's [bash/](bash/) and [zsh/](zsh/) folders (backing up anything already at those paths to `*.pre-dotfiles-backup`, once);
+- install [oh-my-zsh](https://ohmyz.sh/) into `~/.oh-my-zsh` if it isn't already there.
+
+### Bash and Zsh
+
+Both shells are supported. `bash/.aliases`, `bash/.exports` and `bash/.functions` are shared between them; `bash/.bash_profile`/`bash/.bashrc` and `zsh/.zshrc` are shell-specific entry points. The Zsh config uses oh-my-zsh — edit `ZSH_THEME` and `plugins` in [zsh/.zshrc](zsh/.zshrc) to taste.
+
 ### Specify the `$PATH`
 
 If `~/.path` exists, it will be sourced along with the other files, before any feature testing (such as [detecting which version of `ls` is being used](https://github.com/mathiasbynens/dotfiles/blob/aff769fd75225d8f2e481185a71d5e05b76002dc/.aliases#L21-L26)) takes place.
