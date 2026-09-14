@@ -161,7 +161,7 @@ alias less='less -FSRXcr'
 alias path='echo $PATH'
 
 
-alias gac='git add && git commit -m'
+alias gac='git add . && git commit -m'
 alias gd="git diff"
 alias gco='git checkout'
 alias gs="git status"
