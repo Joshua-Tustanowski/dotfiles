@@ -8,12 +8,6 @@ alias .....="cd ../../../.."
 alias ~="cd ~" # `cd` is probably faster to type though
 alias -- -="cd -"
 
-# Shortcuts
-alias d="cd ~/Documents/Dropbox"
-alias dl="cd ~/Downloads"
-alias dt="cd ~/Desktop"
-alias p="cd ~/projects"
-alias g="git"
 
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`
@@ -152,3 +146,25 @@ alias fdm-up='make -C $HOME/Workspace/Management up'
 alias fdm-down='make -C $HOME/Workspace/Management down'
 alias fdm-shell='make -C $HOME/Workspace/Management shell'
 alias fdm-check='make -C $HOME/Workspace/Management check'
+
+
+# git related aliases
+alias ls='ls -h --color'
+alias ll='ls -lAhp --color'
+alias lr='ls -lrtAhp --color'
+alias lg='ls -lAhp --color --git'
+
+
+alias less='less -FSRXcr'
+
+
+alias path='echo $PATH'
+
+
+alias gac='git add && git commit -m'
+alias gd="git diff"
+alias gco='git checkout'
+alias gs="git status"
+alias gp="git push"
+alias gpf="git push --force"
+
