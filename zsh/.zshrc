@@ -27,9 +27,9 @@ export PATH="$PATH:$HOME/google-cloud-sdk/bin"
 # * ~/.path can be used to extend `$PATH`.
 # * ~/.extra can be used for other settings you don’t want to commit.
 [ -f ~/.path ] && source ~/.path;
-[ -f "$HOME/dev/dotfiles/shell/.exports" ] && source "$HOME/dev/dotfiles/shell/.exports";
-[ -f "$HOME/dev/dotfiles/shell/.aliases" ] && source "$HOME/dev/dotfiles/shell/.aliases";
-[ -f "$HOME/dev/dotfiles/shell/.functions" ] && source "$HOME/dev/dotfiles/shell/.functions";
+[ -f "$HOME/shell/.exports" ] && source "$HOME/shell/.exports";
+[ -f "$HOME/shell/.aliases" ] && source "$HOME/shell/.aliases";
+[ -f "$HOME/shell/.functions" ] && source "$HOME/shell/.functions";
 [ -f ~/.extra ] && source ~/.extra;
 
 # Case-insensitive globbing (used in pathname expansion)
@@ -42,3 +42,10 @@ setopt histignorespace;
 
 # Correct typos in path names when using `cd`
 setopt nocorrect;
+
+# pam-cli shell completion
+if [ -f "/Users/josh/.pam-cli/completions/_pam-cli" ]; then
+    autoload -U compinit
+    compinit
+    source "/Users/josh/.pam-cli/completions/_pam-cli"
+fi

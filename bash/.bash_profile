@@ -4,12 +4,10 @@ export PATH="$HOME/bin:$PATH";
 # Load the shell dotfiles, and then some:
 # * ~/.path can be used to extend `$PATH`.
 # * ~/.extra can be used for other settings you don’t want to commit.
-dotfiles_root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)";
-for file in ~/.path "$dotfiles_root"/shell/.{exports,aliases,functions} "$dotfiles_root"/bash/.bash_prompt ~/.extra; do
+for file in ~/.path "$HOME"/shell/.{exports,aliases,functions} "$HOME"/bash/.bash_prompt ~/.extra; do
 	[ -r "$file" ] && [ -f "$file" ] && source "$file";
 done;
 unset file;
-unset dotfiles_root;
 
 # Case-insensitive globbing (used in pathname expansion)
 shopt -s nocaseglob;

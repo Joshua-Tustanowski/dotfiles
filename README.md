@@ -11,12 +11,12 @@ source bootstrap.sh
 To update later on, just run that command again.
 
 Running it will, among other things:
-- symlink `~/.bash_profile`, `~/.bashrc` and `~/.zshrc` to the real files in this repo's [bash/](bash/) and [zsh/](zsh/) folders (backing up anything already at those paths to `*.pre-dotfiles-backup`, once);
+- install the shell files under `~/bash`, `~/zsh`, and `~/shell`, then symlink `~/.bash_profile`, `~/.bashrc`, and `~/.zshrc` to those installed copies (backing up anything already at those paths to `*.pre-dotfiles-backup`, once);
 - install [oh-my-zsh](https://ohmyz.sh/) into `~/.oh-my-zsh` if it isn't already there.
 
 ### Bash and Zsh
 
-Both shells are supported. `bash/.aliases`, `bash/.exports` and `bash/.functions` are shared between them; `bash/.bash_profile`/`bash/.bashrc` and `zsh/.zshrc` are shell-specific entry points. The Zsh config uses oh-my-zsh — edit `ZSH_THEME` and `plugins` in [zsh/.zshrc](zsh/.zshrc) to taste.
+Both shells are supported. `shell/.aliases`, `shell/.exports`, and `shell/.functions` are shared between them; `bash/.bash_profile`/`bash/.bashrc` and `zsh/.zshrc` are shell-specific entry points. The Zsh config uses oh-my-zsh — edit `ZSH_THEME` and `plugins` in [zsh/.zshrc](zsh/.zshrc) to taste.
 
 ### Specify the `$PATH`
 
