@@ -1,17 +1,56 @@
 # Joshua's dotfiles
 
-My macOS shell setup, based on Mathias Bynens' dotfiles and trimmed for how I work.
+Personal dotfiles split into portable `shared/` config and OS-specific setup.
 
-## What's in here
+## Layout
 
-- Bash and Zsh config
-- shared aliases, exports, and shell functions
-- Git defaults and aliases
-- macOS defaults script
-- Homebrew install script
-- oh-my-zsh setup for Zsh
+```text
+shared/          portable shell/Git/readline config
+shared/bash/     Bash entry points and prompt
+shared/shell/    shared aliases, exports, and functions
+macos/           macOS-only setup
+macos/zsh/       Zsh + oh-my-zsh config
+macos/.macos     macOS defaults
+macos/brew.sh    Homebrew packages
+bootstrap.sh     local macOS installer
+```
 
-## Install
+## Core portable bits
+
+These are the files worth reusing across macOS, Linux, and DevPod/container startup:
+
+```text
+shared/shell/.aliases
+shared/shell/.exports
+shared/shell/.functions
+shared/bash/.bashrc
+shared/bash/.bash_profile
+shared/.gitconfig
+shared/.gitignore
+shared/.gitattributes
+shared/.inputrc
+```
+
+Container/Linux startup should use `shared/` and skip anything that assumes macOS, Homebrew, Finder, `pbcopy`, or local absolute paths.
+
+## DevPod/container install shape
+
+Keep startup boring: sync `shared/` into the container home.
+
+```bash
+#!/usr/bin/env bash
+set -euo pipefail
+
+DOTFILES_DIR="${DOTFILES_DIR:-$HOME/dotfiles}"
+rsync -a "$DOTFILES_DIR/shared/" "$HOME/"
+
+ln -sf "$HOME/bash/.bashrc" "$HOME/.bashrc"
+ln -sf "$HOME/bash/.bash_profile" "$HOME/.bash_profile"
+```
+
+Use `~/.extra` for work/container-only settings and secrets.
+
+## Local Mac install
 
 ```bash
 git clone git@github-personal:Joshua-Tustanowski/dotfiles.git ~/dotfiles
@@ -19,26 +58,13 @@ cd ~/dotfiles
 source bootstrap.sh
 ```
 
-Run it again any time to pull the latest changes and re-sync the files.
-
-`bootstrap.sh` copies the repo into `$HOME`, installs oh-my-zsh if needed, and symlinks:
+`bootstrap.sh` syncs `shared/`, installs the macOS Zsh config, installs oh-my-zsh if needed, and symlinks:
 
 - `~/.bash_profile` → `~/bash/.bash_profile`
 - `~/.bashrc` → `~/bash/.bashrc`
 - `~/.zshrc` → `~/zsh/.zshrc`
 
 Existing non-symlink shell entry files are backed up once as `*.pre-dotfiles-backup`.
-
-## Layout
-
-```text
-bash/      Bash entry points and prompt
-zsh/       Zsh entry point, oh-my-zsh config, completions
-shell/     shared aliases, exports, and functions
-.macos     macOS defaults
-brew.sh    Homebrew packages
-.gitconfig Git aliases and defaults
-```
 
 ## Local-only config
 
@@ -51,15 +77,15 @@ These files are intentionally outside the repo:
 Create personal Git config from the example:
 
 ```bash
-cp .gitconfig-personal.example ~/.gitconfig-personal
+cp shared/.gitconfig-personal.example ~/.gitconfig-personal
 ```
 
 ## New Mac checklist
 
 ```bash
 source bootstrap.sh
-./.macos
-./brew.sh
+./macos/.macos
+./macos/brew.sh
 ```
 
 Read scripts before running them. They change shell files, macOS defaults, and Homebrew packages.

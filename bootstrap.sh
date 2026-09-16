@@ -1,28 +1,23 @@
 #!/usr/bin/env bash
+set -e
 
-cd "$(dirname "${BASH_SOURCE}")";
+cd "$(dirname "${BASH_SOURCE[0]}")";
 
-git pull origin main;
+git pull --ff-only origin main;
 
 function doIt() {
-	rsync --exclude ".git/" \
-		--exclude ".DS_Store" \
-		--exclude ".osx" \
-		--exclude "bootstrap.sh" \
-		--exclude "README.md" \
-		--exclude "LICENSE" \
+	rsync --exclude ".DS_Store" \
 		--exclude ".gitconfig-personal.example" \
-		--exclude "brew.sh" \
-		-avh --no-perms . ~;
+		-avh --no-perms shared/ "$HOME/";
+	rsync -avh --no-perms macos/zsh/ "$HOME/zsh/";
 
 	# Install oh-my-zsh if it isn't already present
 	if [ ! -d "$HOME/.oh-my-zsh" ]; then
 		git clone --depth=1 https://github.com/ohmyzsh/ohmyzsh.git "$HOME/.oh-my-zsh";
 	fi;
 
-	# The files above are installed into `$HOME/bash`, `$HOME/zsh`, and
-	# `$HOME/shell`. Symlink the shells' top-level entry points to those
-	# installed copies (backing up anything already there, once).
+	# Symlink shell entry points to the installed copies, backing up existing
+	# non-symlinks once.
 	local entry;
 	for entry in ".bash_profile:bash/.bash_profile" ".bashrc:bash/.bashrc" ".zshrc:zsh/.zshrc"; do
 		local target="${entry%%:*}";
