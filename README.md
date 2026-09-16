@@ -12,6 +12,7 @@ macos/           macOS-only setup
 macos/zsh/       Zsh + oh-my-zsh config
 macos/.macos     macOS defaults
 macos/brew.sh    Homebrew packages
+install.sh       DevPod/container installer
 bootstrap.sh     local macOS installer
 ```
 
@@ -33,20 +34,12 @@ shared/.inputrc
 
 Container/Linux startup should use `shared/` and skip anything that assumes macOS, Homebrew, Finder, `pbcopy`, or local absolute paths.
 
-## DevPod/container install shape
+## DevPod/container install
 
-Keep startup boring: sync `shared/` into the container home.
+`install.sh` is the Linux-safe entry point for DevPod dotfiles. It copies `shared/` into `$HOME` and symlinks Bash entry points:
 
-```bash
-#!/usr/bin/env bash
-set -euo pipefail
-
-DOTFILES_DIR="${DOTFILES_DIR:-$HOME/dotfiles}"
-rsync -a "$DOTFILES_DIR/shared/" "$HOME/"
-
-ln -sf "$HOME/bash/.bashrc" "$HOME/.bashrc"
-ln -sf "$HOME/bash/.bash_profile" "$HOME/.bash_profile"
-```
+- `~/.bash_profile` → `~/bash/.bash_profile`
+- `~/.bashrc` → `~/bash/.bashrc`
 
 Use `~/.extra` for work/container-only settings and secrets.
 
