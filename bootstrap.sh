@@ -11,6 +11,8 @@ function doIt() {
 		-avh --no-perms shared/ "$HOME/";
 	rsync -avh --no-perms macos/zsh/ "$HOME/zsh/";
 
+	./macos/dock_reset.sh;
+
 	# Install oh-my-zsh if it isn't already present
 	if [ ! -d "$HOME/.oh-my-zsh" ]; then
 		git clone --depth=1 https://github.com/ohmyzsh/ohmyzsh.git "$HOME/.oh-my-zsh";

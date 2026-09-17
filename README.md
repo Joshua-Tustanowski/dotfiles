@@ -12,6 +12,7 @@ macos/           macOS-only setup
 macos/zsh/       Zsh + oh-my-zsh config
 macos/.macos     macOS defaults
 macos/brew.sh    Homebrew packages
+macos/dock_reset.sh  quick Dock reset: right side + auto-hide
 install.sh       DevPod/container installer
 bootstrap.sh     local macOS installer
 ```
@@ -79,6 +80,9 @@ cp shared/.gitconfig-personal.example ~/.gitconfig-personal
 source bootstrap.sh
 ./macos/.macos
 ./macos/brew.sh
+
+# Optional: re-apply Dock-only settings later
+./macos/dock_reset.sh
 ```
 
 Read scripts before running them. They change shell files, macOS defaults, and Homebrew packages.
