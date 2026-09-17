@@ -159,6 +159,8 @@
 
 	# https://git-scm.com/docs/git-config#git-config-pushdefault
 	default = simple
+	# Automatically set upstream when pushing a new branch.
+	autoSetupRemote = true
 	# Make `git push` push relevant annotated tags when pushing branches out.
 	followTags = true
 
